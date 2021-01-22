@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom';
 
 function ItemsList(props) {
 
-  console.log("PROPS.ITEMS IS ", props.items )
-  console.log("PROPS TYPE IS", typeof(props.items))
+  //console.log("PROPS.ITEMS IS ", props.items )
+  //console.log("PROPS TYPE IS", typeof(props.items))
 
   function routeToItem(ev, item) {
     ev.preventDefault();
