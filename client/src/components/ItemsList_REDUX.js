@@ -1,9 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-function ItemsList(props) {
+//REDUX
+import { connect } from 'react-redux'
 
-  //console.log("PROPS.ITEMS IS ", props.items )
+function ItemsList_REDUX(props) {
+
+  console.log("PROPS IS ", props.state.items )
   //console.log("PROPS TYPE IS", typeof(props.items))
 
   function routeToItem(ev, item) {
@@ -15,10 +18,10 @@ function ItemsList(props) {
 
     <div className="items-list-wrapper">
 
-         { !props.items ? (
+         { !props.state.items ? (
             <h1>Loading...</h1>
             ) : (  
-            props.items.map( item => {
+            props.state.items.map( item => {
 
                return (
                   <div
@@ -44,14 +47,8 @@ function ItemsList(props) {
   );
 }
 
-export default ItemsList;
+const mapStateToProps = (state) => {
+   return {state}
+}
 
-/*
-TERNARY PATTERN SIMPLIFIED
-return (
-   <tag>
-      { condition ? ( <tag>if</tag>) : ( <tag>else</tag>) } 
-   </tag>
-
-) // END RETURN
-*/
+export default connect(mapStateToProps, {})(ItemsList_REDUX);

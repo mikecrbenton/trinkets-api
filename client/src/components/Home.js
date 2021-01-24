@@ -1,6 +1,8 @@
 import React from 'react';
 
+
 function Home(props) {
+
   const routeToShop = event => {
     event.preventDefault();
     props.history.push('/item-list');

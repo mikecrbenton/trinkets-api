@@ -1,39 +1,28 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import {useHistory} from 'react-router-dom'
+import axios from 'axios';
 
-const initialItem = {
-  name: "",
-  price: "",
-  imageUrl: "",
-  description: "",
-  shipping: ""
+// REDUX
+import { connect } from 'react-redux'
+import { addNewItem } from '../Redux/actions'
+
+const newItem = {
+  name: '',
+  price: '',
+  imageUrl: '',
+  description: '',
+  shipping: ''
 };
 
-const UpdateForm = (props) => {
+const ItemForm_REDUX = props => {
 
   const { push } = useHistory();
-  // LOCAL STATE FOR EDIT-FORM
-  const [item, setItem] = useState(initialItem);
-  const { id } = useParams();
+  const [item, setItem] = useState(newItem);
 
-
-  // GET ITEM BY ID TO DISPLAY------------------
-  useEffect(() => {
-    axios
-      .get(`http://localhost:3333/itemById/${id}`)
-      .then((res) => {
-        console.log(res.data)
-        setItem(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, [id]);
-
-
-  const changeHandler = (ev) => {
+  const changeHandler = ev => {
     ev.persist();
     let value = ev.target.value;
-    if (ev.target.name === "price") {
+    if (ev.target.name === 'price') {
       value = parseInt(value, 10);
     }
 
@@ -43,22 +32,24 @@ const UpdateForm = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = e => {
     e.preventDefault();
-    // make a PUT request to edit the item
-    axios
-      .put(`http://localhost:3333/items/${id}`, item)
-      .then((res) => {
-        // res.data
-        props.setItems(res.data);
-        push(`/item-list/${id}`);
-      })
-      .catch((err) => console.log(err));
+    props.addNewItem(item)
+   //  axios
+   //  .post(`http://localhost:3333/items/`, item)
+   //  .then((res) => {
+   //    console.log( "RES.DATA: ", res.data )
+   //    props.setItems(res.data);
+   //    push(`/item-list/`);
+   //  })
+   //  .catch((err) => console.log(err));
+    push(`/item-list/`);
+
   };
 
   return (
     <div>
-      <h2>Update Item</h2>
+      <h2>REDUX Add New Item</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -105,10 +96,10 @@ const UpdateForm = (props) => {
         />
         <div className="baseline" />
 
-        <button className="md-button form-button">Update</button>
+        <button className="md-button form-button">Add New Item</button>
       </form>
     </div>
   );
 };
 
-export default UpdateForm;
+export default connect(null,{addNewItem})(ItemForm_REDUX);

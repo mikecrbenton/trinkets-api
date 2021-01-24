@@ -9,9 +9,9 @@ import { storeReducer } from './Redux/reducers/storeReducer'
 import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import thunk from 'redux-thunk'
-import logger from 'redux-logger'
+import logger from 'redux-logger' // took logger out of applyMiddleware()
 
-let store = createStore( storeReducer, applyMiddleware(thunk,logger))
+let store = createStore( storeReducer, applyMiddleware(thunk))
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(

@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
-const initialItem = {
+// REDUX
+import { connect } from 'react-redux'
+import { updateById } from '../Redux/actions'
+
+const editedItem = {
   name: "",
   price: "",
   imageUrl: "",
@@ -10,20 +14,20 @@ const initialItem = {
   shipping: ""
 };
 
-const UpdateForm = (props) => {
+const UpdateForm_REDUX = (props) => {
+  
+  console.log("PROPS IN REDUX UPDATE FORM: ", props.updateById)
 
   const { push } = useHistory();
   // LOCAL STATE FOR EDIT-FORM
-  const [item, setItem] = useState(initialItem);
+  const [item, setItem] = useState(editedItem);
   const { id } = useParams();
-
 
   // GET ITEM BY ID TO DISPLAY------------------
   useEffect(() => {
-    axios
-      .get(`http://localhost:3333/itemById/${id}`)
+    axios.get(`http://localhost:3333/itemById/${id}`)
       .then((res) => {
-        console.log(res.data)
+        // res.data
         setItem(res.data);
       })
       .catch((err) => console.log(err));
@@ -46,19 +50,23 @@ const UpdateForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // make a PUT request to edit the item
-    axios
-      .put(`http://localhost:3333/items/${id}`, item)
-      .then((res) => {
-        // res.data
-        props.setItems(res.data);
-        push(`/item-list/${id}`);
-      })
-      .catch((err) => console.log(err));
+    props.updateById(id, item)
+//     axios
+//       .put(`http://localhost:3333/items/${id}`, item)
+//       .then((res) => {
+//         // res.data
+//         props.setItems(res.data);
+//         push(`/item-list/${id}`);
+//       })
+//       .catch((err) => console.log(err));
+       push(`/item-list/${id}`);
+
   };
+
 
   return (
     <div>
-      <h2>Update Item</h2>
+      <h2>REDUX Update Item</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -111,4 +119,10 @@ const UpdateForm = (props) => {
   );
 };
 
-export default UpdateForm;
+const mapStateToProps = (state) => {
+   return {
+      redux_items : state
+   }
+}
+
+export default connect(mapStateToProps, {updateById})(UpdateForm_REDUX);
