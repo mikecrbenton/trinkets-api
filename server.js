@@ -7,6 +7,9 @@ const server = express();
 server.use(bodyParser.json());
 server.use(cors());
 
+// TEMPORARY TOKEN 1/24/21
+const token = "ahuBHejkJJiMDhmODZhZi0zaeLTQ4ZfeaseOGZgesai1jZWYgrTA07i73Gebhu98";
+
 const sendUserError = (msg, res) => {
   res.status(422);
   res.json({ Error: msg });
@@ -149,6 +152,34 @@ let items = [
       "Most of our items are in stock and will ship quickly. Orders for in-stock items placed before 5pm ET Monday through Friday, excluding Federal holidays, will ship in the US: \r\n ECONOMY SHIPPING: within 8 days, arriving no later than the 9th business day after the order was placed. STANDARD SHIPPING: within 4 days, arriving 5 business days after the order was placed. PREFERRED SHIPPING: within 2 days, arriving 3 business days after the order was placed. EXPEDITED SHIPPING: within 1 day, arriving 2 business days after the order was placed. EXPRESS SHIPPING: will ship the same day and arrive 1 business day later."
   }
 ];
+
+// TEMPORARY AUTHENTICATION - UNTIL DATABASE=====================================
+function authenticator(req, res, next) {
+   const { authorization } = req.headers;
+   if (authorization === token) {
+     next();
+   } else {
+     res.status(403).json({ error: "User must be logged in" });
+   }
+ }
+ 
+ server.post("/login", (req, res) => {
+   const { username, password } = req.body;
+   if (username === "username" && password === "arbitrary") {
+     req.loggedIn = true;
+     setTimeout(() => {
+       res.status(200).json({
+         payload: token
+       });
+     }, 1000);
+   } else {
+     res
+       .status(403)
+       .json({ error: "Username or Password incorrect" });
+   }
+ });
+// TEMPORARY AUTHENTICATION - UNTIL DATABASE=====================================
+
 
 server.get("/items", (req, res) => {
   res.json(items);
