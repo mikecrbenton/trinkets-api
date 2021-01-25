@@ -3,10 +3,15 @@ import React from 'react';
 
 function Home(props) {
 
-  const routeToShop = event => {
+  const routeToLogin = event => {
     event.preventDefault();
-    props.history.push('/item-list');
+    props.history.push('/login');
   };
+
+  const routeToRegister = event => {
+   event.preventDefault();
+   props.history.push('/register');
+ };
 
   return (
     <div className="home-wrapper">
@@ -15,8 +20,11 @@ function Home(props) {
         src="https://www.uncommongoods.com/images/category/fun-fullwidth.jpg"
         alt=""
       />
-      <button onClick={routeToShop} className="md-button shop-button">
-        Shop now!
+      <button onClick={routeToLogin} className="md-button shop-button">
+        Login
+      </button>
+      <button onClick={routeToRegister} className="md-button shop-button">
+        Register
       </button>
     </div>
   );

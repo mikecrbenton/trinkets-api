@@ -35,16 +35,7 @@ const ItemForm_REDUX = props => {
   const handleSubmit = e => {
     e.preventDefault();
     props.addNewItem(item)
-   //  axios
-   //  .post(`http://localhost:3333/items/`, item)
-   //  .then((res) => {
-   //    console.log( "RES.DATA: ", res.data )
-   //    props.setItems(res.data);
-   //    push(`/item-list/`);
-   //  })
-   //  .catch((err) => console.log(err));
-    push(`/item-list/`);
-
+    push(`/item-list-redux/`);
   };
 
   return (

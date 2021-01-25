@@ -1,6 +1,4 @@
 import axios from 'axios'
-import { useHistory } from 'react-router-dom'
-import useHistoryHook from '../../utils/UseHistoryHook'
 
 export const GET_ITEMS = "GET_ITEMS"
 export const ADD_ITEM = "ADD_ITEM"
@@ -59,7 +57,6 @@ export const deleteItem = (id) => {
          .then( res => {
             //console.log("REDUX DELETE IS CALLED", res.data)
             dispatch( { type: DELETE_ITEM, payload: res.data })
-            useHistoryHook('/item-list')  // ##################### NOT WORKING ##########
          })
          .catch( err => console.log("ERROR IN DELETE", err))
     }

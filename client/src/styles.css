@@ -48,9 +48,9 @@ nav {
 }
 
 .home-wrapper {
-  display: flex;
+  /* display: flex;
   flex-flow: column nowrap;
-  align-items: center;
+  align-items: center; */
 }
 
 .home-image {
@@ -318,4 +318,13 @@ input:focus + .baseline:before {
 
 .form-button {
   margin: 24px 0;
+}
+
+/* ADDED FOR SPRINT PROJECT */
+.register-link{
+   text-decoration: none;
+   color: #1c5d76;
+   font-weight: bold;
+   margin-right: 8px;
+   display: block;
 }

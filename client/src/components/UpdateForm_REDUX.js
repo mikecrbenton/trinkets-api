@@ -49,18 +49,8 @@ const UpdateForm_REDUX = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // make a PUT request to edit the item
     props.updateById(id, item)
-//     axios
-//       .put(`http://localhost:3333/items/${id}`, item)
-//       .then((res) => {
-//         // res.data
-//         props.setItems(res.data);
-//         push(`/item-list/${id}`);
-//       })
-//       .catch((err) => console.log(err));
-       push(`/item-list/${id}`);
-
+    push(`/item-list/${id}`);
   };
 
 

@@ -23,19 +23,19 @@ const initialState = {
 
       // SHOULD REFACTOR TO "setItems()" - ALL THESE DO THE SAME
       case GET_ITEMS:
-         console.log("GET_ITEMS IS CALLED")
+         //console.log("GET_ITEMS IS CALLED")
          return  {...state, items: [...action.payload] } 
       
       case UPDATE_BY_ID: 
-         console.log("UPDATE BY ID IS CALLED")
+         //console.log("UPDATE BY ID IS CALLED")
          return  {...state, items: [...action.payload] } 
       
       case ADD_ITEM: 
-         console.log("ADD ITEM IS CALLED")
+         //console.log("ADD ITEM IS CALLED")
          return  {...state, items: [...action.payload] } 
       
       case DELETE_ITEM:
-         console.log("DELETE_ITEM IS CALLED", action.payload)
+         //console.log("DELETE_ITEM IS CALLED", action.payload)
          return  { items: [ ...action.payload]  } // RELOADS FROM API - WORKING
 
       default:
