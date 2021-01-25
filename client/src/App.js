@@ -28,23 +28,13 @@ function App (props) {
 
   // SET INITIAL STATE OF THE ITEMS 
   useEffect(() => {
-   //  const getItems = () => {
-   //    axios
-   //      .get("http://localhost:3333/items")
-   //      .then((res) => {
-   //        setItems(res.data);
-   //      })
-   //      .catch((error) => console.log(error));
-   //  };
-    //getItems();
-    props.getItems() // REDUX ACTION CALL=================
-
+    props.getItems() 
   }, []);
 
   return (
     <div className="App">
       <nav>
-        <h1 className="store-header">Josh's Trinkets</h1>
+        <h1 className="store-header">Online Marketplace</h1>
 
         <div className="nav-links">
 
