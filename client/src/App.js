@@ -6,6 +6,7 @@ import Item from "./components/Item";
 import Login from "./components/User-Login/Login"
 import Register from "./components/User-Login/Register"
 import PrivateRoute from './utils/PrivateRoute'
+import styled from 'styled-components'
 import "./styles.css";
 
 // REDUX=======================================
@@ -18,14 +19,6 @@ import ItemsList_REDUX from './components/ItemsList_REDUX'
 
 function App (props) {
 
-  // APP LEVEL STATE BEFORE REDUX-----------------
-  // const [items, setItems] = useState([]);
-
-
-  //console.log("REDUX STATE IN APP IS: ", props.items)
-  //console.log("LOCAL STATE IN APP IS: ", items)
-
-
   // SET INITIAL STATE OF THE ITEMS 
   useEffect(() => {
     props.getItems() 
@@ -33,67 +26,24 @@ function App (props) {
 
   return (
     <div className="App">
-      <nav>
-        <h1 className="store-header">Online Marketplace</h1>
-
+       
+      <Navigation>
+        <h1>Online Marketplace</h1>
         <div className="nav-links">
-
-          <NavLink exact to="/">
-            Home
-          </NavLink>
-
-          <NavLink exact to="/login">
-            Login
-          </NavLink>
-
-          <NavLink exact to="/item-form-redux">
-           Add-Item
-          </NavLink>
-
-          {/* <NavLink exact to="/item-form">
-            Add Item
-          </NavLink> */}
-
-          {/* <NavLink to="/item-list">Shop</NavLink> */}
-
-          <NavLink to="/item-list-redux">Shop</NavLink>
-
+          <NavLink exact to="/"> Home </NavLink>
+          <NavLink exact to="/login"> Login </NavLink>
+          <NavLink exact to="/item-form-redux"> Add-Item </NavLink>
+          <NavLink to="/item-list-redux"> Shop </NavLink>
         </div>
-
-      </nav>
+      </Navigation>
 
       <Route exact path="/" component={Home} />
-{/* 
-      <Route
-        exact
-        path="/item-list"
-        render={(props) => <ItemsList {...props} items={items} />}
-      /> */}
 
-      {/* <Route
-        path="/item-list/:id"
-        render={(props) => (
-          <Item {...props} items={items} setItems={setItems} />
-        )}
-      /> */}
-
-      {/* <Route 
-        path="/item-form" 
-        render={() => <ItemForm items={items} setItems={setItems} /> }
-      /> */}
-
-      {/* <Route
-        path="/update-item/:id"
-        render={() => <UpdateForm items={items} setItems={setItems} />}
-      /> */}
-
-      {/* ================REDUX ROUTE==================== */}
       <Route path="/login" component={Login}/>
       <Route path="/register" component={Register}/>
 
       <Route exact path="/item-list/:id" component={Item}/>
 
-      {/* <Route exact path="/item-list-redux" component={ItemsList_REDUX}/> */}
       <PrivateRoute exact path="/item-list-redux" component={ItemsList_REDUX}/>
       <Route path="/item-form-redux" component={ItemForm_REDUX} />
       <Route path="/update-item-redux/:id" component={UpdateForm_REDUX} />
@@ -107,5 +57,35 @@ const mapStateToProps = (state) => {
       items : state
    }
 }
-
 export default connect(mapStateToProps,{getItems})(App);
+
+const Navigation = styled.nav`
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   padding: 0 16px;
+   border-bottom: 1px solid #efefef;
+   margin-bottom: 32px;
+
+   h1{
+      color: #1c5d76;
+   }
+
+   .nav-links{
+      display: flex;
+      justify-content: space-between;
+   
+      a{
+         text-decoration: none;
+         color: #1c5d76;
+         font-weight: bold;
+         margin-right: 8px;
+      }
+      a:last-of-type{
+         margin-right: 0;
+      }
+      a.active {
+         border-bottom: 1px solid #1c5d76;
+       }
+   }
+`;

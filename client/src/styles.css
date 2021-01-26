@@ -14,7 +14,10 @@ body,
   width: 100%;
 }
 
-nav {
+
+
+/******************** CSS DISABLED - REFACTORED USING STYLED COMPONENTS *********************/
+/* nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,36 +44,36 @@ nav {
 
 .nav-links a.active {
   border-bottom: 1px solid #1c5d76;
-}
+} */
 
-.store-header {
+/* .store-header {
   color: #1c5d76;
-}
+} */
 
-.home-wrapper {
-  /* display: flex;
+/* .home-wrapper {
+  display: flex; NOT USING THESE STYLES
   flex-flow: column nowrap;
-  align-items: center; */
-}
+  align-items: center; 
+} */
 
-.home-image {
+/* .home-image {
   width: 100%;
   min-width: 1032px;
-}
+} */
 
-.shop-button.md-button {
+/* .shop-button.md-button {
   margin-top: -16px;
   width: 115px;
-}
+} */
 
-.items-list-wrapper {
+/* .items-list-wrapper {
   margin-top: 36px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-}
+} */
 
-.item-card {
+/* .item-card {
   width: 250px;
   margin: 0 10px 32px;
   cursor: pointer;
@@ -80,27 +83,27 @@ nav {
   margin: 0 0 4px;
   text-align: left;
   color: #595959;
-}
+} */
 
-.item-list-image {
+/* .item-list-image {
   width: 100%;
   border: 1px solid lightgray;
-}
+} */
 
-.item-wrapper {
+/* .item-wrapper {
   max-width: 900px;
   margin: 0 auto;
-}
+} */
 
-.item-wrapper .md-button {
+/* .item-wrapper .md-button {
   margin-bottom: 24px;
-}
+} */
 
-.item-header {
+/* .item-header {
   display: flex;
-}
+} */
 
-h2,
+/* h2,
 .item-header h2,
 .item-header h4 {
   color: #1c5d76;
@@ -109,9 +112,9 @@ h2,
 
 .item-header h4 {
   margin-top: 16px;
-}
+} */
 
-.item-sub-nav {
+/* .item-sub-nav {
   border-bottom: 1px solid #a1d5d4;
   justify-content: center;
 }
@@ -124,18 +127,18 @@ h2,
 
 .item-sub-nav a.active {
   color: #1c5d76;
-  font-weigth: bold;
+  font-weight: bold;
 }
 
 .item-sub-nav a:first-of-type {
   margin-right: 32px;
-}
+} */
 
-.item-card a {
+/* .item-card a {
   text-decoration: none;
-}
+} */
 
-.image-wrapper {
+/* .image-wrapper {
   width: 50%;
   display: flex;
   justify-content: flex-start;
@@ -146,15 +149,15 @@ h2,
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-start;
-}
+} */
 
-.item-description {
+/* .item-description {
   max-width: 720px;
   margin: 32px auto;
-}
+} */
 
 /* material design button */
-.md-button {
+/* .md-button {
   position: relative;
   display: inline-block;
   box-sizing: border-box;
@@ -252,9 +255,9 @@ h2,
 
 .md-button:disabled::after {
   opacity: 0;
-}
+} */
 
-form {
+/* form {
   margin: 0 auto;
   width: 300px;
 }
@@ -278,16 +281,16 @@ input {
   background-color: #dcdcdc;
 }
 
-/* Hover.css > Underline From Left > Modfified */
+/************* Hover.css > Underline From Left > Modfified 
 .baseline {
   -webkit-transform: perspective(1px) translateZ(0);
   box-shadow: 0 0 1px rgba(0, 0, 0, 0);
   display: block;
-  /*display: inline-block;*/
+  /********display: inline-block;
   overflow: hidden;
   position: relative;
   transform: perspective(1px) translateZ(0);
-  /* vertical-align: middle;*/
+  /*************** vertical-align: middle;
 }
 .baseline:before {
   content: '';
@@ -311,14 +314,14 @@ input {
   right: 0;
 }
 
-/* Crucial style rule */
+/********* Crucial style rule 
 input:focus + .baseline:before {
   right: 0;
 }
 
 .form-button {
   margin: 24px 0;
-}
+} */
 
 /* ADDED FOR SPRINT PROJECT */
 .register-link{

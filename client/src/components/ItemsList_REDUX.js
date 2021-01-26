@@ -1,13 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-
+import styled from 'styled-components'
 //REDUX
 import { connect } from 'react-redux'
 
 function ItemsList_REDUX(props) {
 
-  console.log("PROPS IS ", props.state.items )
-  //console.log("PROPS TYPE IS", typeof(props.items))
+  //console.log("PROPS IS ", props.state.items )
 
   function routeToItem(ev, item) {
     ev.preventDefault();
@@ -16,7 +14,7 @@ function ItemsList_REDUX(props) {
 
   return (
 
-    <div className="items-list-wrapper">
+    <ItemsListWrapper>
 
          { !props.state.items ? (
             <h1>Loading...</h1>
@@ -25,8 +23,8 @@ function ItemsList_REDUX(props) {
 
                return (
                   <div
-                     onClick={ev => routeToItem(ev, item)}
                      className="item-card"
+                     onClick={ev => routeToItem(ev, item)}
                      key={item.id}
                      >
                   <img
@@ -42,7 +40,7 @@ function ItemsList_REDUX(props) {
             )// END TERNARY
          }
 
-    </div>
+    </ItemsListWrapper>
 
   );
 }
@@ -52,3 +50,32 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps, {})(ItemsList_REDUX);
+
+const ItemsListWrapper = styled.div`
+   margin-top: 36px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+
+   // CARD===============
+   .item-card {
+      width: 250px;
+      margin: 0 10px 32px;
+      cursor: pointer;
+    }
+    .item-card p {
+      margin: 0 0 4px;
+      text-align: left;
+      color: #595959;
+    }
+    .item-card a {
+      text-decoration: none;
+    }
+
+    // IMAGE==============
+    .item-list-image {
+      width: 100%;
+      border: 1px solid lightgray;
+    }
+
+`;
